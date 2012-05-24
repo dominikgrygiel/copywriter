@@ -32,6 +32,8 @@ gem 'friendly_id'
 gem 'omniauth-facebook'
 gem 'kaminari'
 
+gem 'net-ssh', '~> 2.4.0'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
