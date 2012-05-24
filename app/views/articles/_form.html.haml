@@ -1,4 +1,4 @@
-= form_for @article, :html => { :class => 'form-horizontal' } do |f|
+= form_for [current_user, @article], :url => article_url(current_user, @article), :html => { :class => 'form-horizontal' } do |f|
   .control-group
     = f.label :title, :class => 'control-label'
     .controls

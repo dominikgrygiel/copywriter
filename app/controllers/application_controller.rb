@@ -7,5 +7,10 @@ private
     @categories = Category.all
   end
 
+  helper_method :current_user
+  def current_user
+    User.first
+  end
+
 end
 
