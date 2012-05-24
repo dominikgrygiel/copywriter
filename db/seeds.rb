@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+#
+
+%w{Travel IT Food Style Life}.each do |c|
+  Category.create :name => c, :subdomain => c.downcase
+end
+
