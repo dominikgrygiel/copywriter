@@ -16,8 +16,10 @@
             %b Category:
             = article.category
           = truncate article.content, :length => 250
-        %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_article_url(article.user, article, :subdomain => false), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), article_url(article.user, article, :subdomain => false), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger'
+          - if editable?(article)
+            %p
+              = link_to t('.edit', :default => t("helpers.links.edit")), edit_article_url(article.user, article, :subdomain => false), :class => 'btn btn-mini'
+              = link_to t('.destroy', :default => t("helpers.links.destroy")), article_url(article.user, article, :subdomain => false), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_article_url(current_user, :subdomain => false), :class => 'btn btn-primary'
+- if signed_in?
+  = link_to t('.new', :default => t("helpers.links.new")), new_article_url(current_user, :subdomain => false), :class => 'btn btn-primary'

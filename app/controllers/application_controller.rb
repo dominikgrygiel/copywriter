@@ -7,9 +7,17 @@ private
     @categories = Category.all
   end
 
-  helper_method :current_user
+  helper_method :current_user, :signed_in?
   def current_user
-    User.first
+    @user ||= User.find_by_id(session[:user_id])
+  end
+
+  def signed_in?
+    current_user.present?
+  end
+
+  def login_required
+    redirect_to root_url and return unless signed_in?
   end
 
 end

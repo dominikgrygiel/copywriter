@@ -26,6 +26,10 @@
           .container.nav-collapse
             %ul.nav
               = render :partial => "layouts/category", :collection => @categories
+            %ul.nav.pull-right
+              %li
+                = link_to "/auth/facebook" do
+                  = image_tag "fb.png", :width => 20, :height => 20
 
     .container
       .content

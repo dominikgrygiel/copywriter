@@ -13,6 +13,8 @@
 %p
   = @article.content
 
-.form-actions
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_article_url(current_user, @article), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), article_url(current_user, @article), :method => "delete", :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-danger'
+- if editable?(@article)
+  .form-actions
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_article_url(current_user, @article), :class => 'btn'
+    = link_to t('.destroy', :default => t("helpers.links.destroy")), article_url(current_user, @article), :method => "delete", :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-danger'
+

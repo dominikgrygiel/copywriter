@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  before_filter :login_required, :except => [:index, :show]
+  before_filter :find_article, :only => [:edit, :update, :destroy]
+
   # GET /articles
   # GET /articles.json
   def index
@@ -29,7 +32,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   # GET /articles/new.json
   def new
-    @article = Article.new
+    @article = current_user.articles.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,13 +42,12 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @article = Article.find(params[:id])
   end
 
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(params[:article])
+    @article = current_user.articles.new(params[:article])
 
     respond_to do |format|
       if @article.save
@@ -61,8 +63,6 @@ class ArticlesController < ApplicationController
   # PUT /articles/1
   # PUT /articles/1.json
   def update
-    @article = Article.find(params[:id])
-
     respond_to do |format|
       if @article.update_attributes(params[:article])
         format.html { redirect_to article_url(current_user, @article), notice: 'Article was successfully updated.' }
@@ -77,13 +77,17 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
 
     respond_to do |format|
       format.html { redirect_to root_url }
       format.json { head :no_content }
     end
+  end
+
+private
+  def find_article
+    @article = current_user.articles.find(params[:id])
   end
 
 end

@@ -11,10 +11,6 @@
     = f.label :category_id, :class => 'control-label'
     .controls
       = f.select :category_id, options_from_collection_for_select(@categories, :id, :name)
-  .control-group
-    = f.label :user_id, :class => 'control-label'
-    .controls
-      = f.number_field :user_id, :class => 'number_field'
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), articles_path, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), root_url, :class => 'btn'
