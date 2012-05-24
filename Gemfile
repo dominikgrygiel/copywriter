@@ -30,6 +30,7 @@ end
 
 gem 'friendly_id'
 gem 'omniauth-facebook'
+gem 'kaminari'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -41,7 +42,7 @@ gem 'omniauth-facebook'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

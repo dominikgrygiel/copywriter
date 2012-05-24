@@ -9,8 +9,9 @@ class ArticlesController < ApplicationController
       @category = Category.find_by_subdomain!(request.subdomain)
       @articles = @category.articles
     else
-      @articles = Article.all
+      @articles = Article
     end
+    @articles = @articles.page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb
