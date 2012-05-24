@@ -79,6 +79,10 @@ namespace :deploy do
   end
 end
 
+after "deploy:update_code" do
+  run "cd #{current_path} && #{runner} rake assets:precompile"
+end
+
 after "deploy:restart" do
   run "curl http://copywriter.ihoshi.pl/ > /dev/null 2> /dev/null"
 end
