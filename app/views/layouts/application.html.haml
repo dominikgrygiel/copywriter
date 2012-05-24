@@ -9,7 +9,7 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
-    %link(href="images/favicon.ico" rel="shortcut icon")
+    %link(href="favicon.ico" rel="shortcut icon")
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon")
     %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72")
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
@@ -28,7 +28,7 @@
               = render :partial => "layouts/category", :collection => @categories
             %ul.nav.pull-right
               %li
-                = link_to "/auth/facebook" do
+                = link_to facebook_auth_url do
                   = image_tag "fb.png", :width => 20, :height => 20
 
     .container
