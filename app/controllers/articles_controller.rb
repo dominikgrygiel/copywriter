@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-  before_filter :no_subdomains, :except => [:index]
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_article, :only => [:edit, :update, :destroy]
 
@@ -88,10 +87,6 @@ class ArticlesController < ApplicationController
   end
 
 private
-  def no_subdomains
-    redirect_to(URI.parse(root_url(:subdomain => false)).merge(request.path).to_s, :status => :moved_permanently) and return if request.subdomain.present?
-  end
-
   def find_article
     @article = current_user.articles.find(params[:id])
   end
