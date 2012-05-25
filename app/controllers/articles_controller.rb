@@ -89,7 +89,7 @@ class ArticlesController < ApplicationController
 
 private
   def no_subdomains
-    redirect_to URI.parse(root_url).merge(request.path), :status => :moved_permanently and return if request.subdomain.present?
+    redirect_to(URI.parse(root_url(:subdomain => false)).merge(request.path).to_s, :status => :moved_permanently) and return if request.subdomain.present?
   end
 
   def find_article
