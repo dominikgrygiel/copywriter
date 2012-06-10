@@ -9,7 +9,7 @@ set :rvm_type, :system
 
 set :rails_env, stage
 set :application, "copywriter"
-set :repository,  "git@bitbucket.org:dominikgrygiel/#{application}.git"
+set :repository,  "git@github.com:dominikgrygiel/#{application}.git"
 
 set :scm, :git
 
